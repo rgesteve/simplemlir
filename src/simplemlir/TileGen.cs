@@ -27,6 +27,11 @@ namespace simplemlir
             ClassDeclarationSyntax cls = ns.Members.First() as ClassDeclarationSyntax;
             MethodDeclarationSyntax krnl = cls.Members.First() as MethodDeclarationSyntax; // TODO -- hard-coded to test code
             //krnl.ParameterList.Parameters.Count;
+            ReturnStatementSyntax ret = krnl.Body.Statements.Last() as ReturnStatementSyntax;
+            //ret.Expression;
+            var nxtToLast = krnl.Body.Statements.Count - 2;
+            ExpressionStatementSyntax tgtExp = krnl.Body.Statements[nxtToLast] as ExpressionStatementSyntax;
+            // %0 = tile.contract add, mul, %cst, %arg1, %arg0 {sink = #map0, srcs = [#map1, #map2]} : !f32, tensor<3x4x!eltwise.f32>, tensor<4x3x!eltwise.f32> -> tensor<3x3x!eltwise.f32>
             return krnl.Identifier.ToString();
         }
     }
