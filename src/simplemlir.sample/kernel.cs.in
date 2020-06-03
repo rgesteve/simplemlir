@@ -8,9 +8,8 @@ namespace KernelTest
             X.bind_dims(I, K);
             Y.bind_dims(K, J);
             var R = TensorOutput(I, J);
-            var temp = X.at(i, k) * Y.at(k, j); 
-            R.add_at(i, j, temp);
-            return R;
+            R(i, j) += X(i, k) * Y(k, j);
+            return R;                        
         }
     }
 }
