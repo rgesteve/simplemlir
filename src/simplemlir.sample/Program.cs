@@ -10,8 +10,8 @@ namespace simplemlir.sample
         {
             string contents = TileGen.ReadSource("kernel.cs.in");
             Console.WriteLine($"The contents are {contents}.");
-            string nsName = TileGen.KernelName(contents);
-            Console.WriteLine($"The name of this namespace is {nsName}.");
+            string clsName = TileGen.KernelName(contents);
+            Console.WriteLine($"The name of the containing class is {clsName}.");
             Console.WriteLine("Done!");
         }
     }

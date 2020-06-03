@@ -24,7 +24,10 @@ namespace simplemlir
             var tree = CSharpSyntaxTree.ParseText(code);
             CompilationUnitSyntax root = tree.GetRoot() as CompilationUnitSyntax;
             NamespaceDeclarationSyntax ns = root.Members.First() as NamespaceDeclarationSyntax;
-            return ns.Name.ToString();
+            ClassDeclarationSyntax cls = ns.Members.First() as ClassDeclarationSyntax;
+            MethodDeclarationSyntax krnl = cls.Members.First() as MethodDeclarationSyntax; // TODO -- hard-coded to test code
+            //krnl.ParameterList.Parameters.Count;
+            return krnl.Identifier.ToString();
         }
     }
 }
